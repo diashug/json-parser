@@ -43,9 +43,17 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "ClosedXML": {
+              "target": "Package",
+              "version": "[0.95.2, )"
+            },
+            "CsvHelper": {
+              "target": "Package",
+              "version": "[15.0.5, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
-              "version": "(, )"
+              "version": "[12.0.3, )"
             }
           },
           "imports": [
