@@ -1,0 +1,28 @@
+﻿<Properties StartupConfiguration="{254F1296-5285-499B-875A-4E43B75C4B0E}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Services/Filter.cs">
+    <Files>
+      <File FileName="Services/Filter.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="JsonParser" expanded="True">
+            <Node name="JsonParser" expanded="True">
+              <Node name="Exporters" expanded="True" />
+              <Node name="Services" expanded="True">
+                <Node name="Filter.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.JsonParser PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>
