@@ -1,5 +1,10 @@
-using JsonParser.Interfaces;
+using System;
+using System.IO;
+using System.Globalization;
 using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
+using JsonParser.Interfaces;
+using CsvHelper;
 
 namespace JsonParser.Exporters
 {
@@ -10,9 +15,23 @@ namespace JsonParser.Exporters
             
         }
 
-        public void Export(Dictionary<string, object> data)
+        public void Export(string[] filters, JArray data)
         {
-            throw new System.NotImplementedException();
+            var records = new List<object>();
+
+            foreach (JObject res in data) {
+                // filter by fields
+                foreach (string filter in filters) {
+                    
+                }
+
+                Console.WriteLine(res["name"] + "," + res["birth_year"]);
+            }
+
+            var writer = new StreamWriter("output.csv");
+            var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
+
+            csv.WriteRecords(records);
         }
     }
 }

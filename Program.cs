@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Net.Http;
 using System.Linq;
 using System.Collections.Generic;
@@ -15,24 +16,40 @@ namespace JsonParser
             // args[0] = source type (url or file)
             // args[1] = url or filename
             // args[2] = root to search
-            // args[3] = key to search
-
+            // args[3] = filters (separated by comma)
             // https://swapi.dev/api/people/
 
-            var result = await client.GetStringAsync(args[1]);
-            JObject json = JObject.Parse(result);
+            var app = new CommandLineApplication<Program>(throwOnUnexpectedArg: false);
 
-            // IEnumerable<JToken> queryResults = json.SelectTokens("$.results[?(@.name)]");
+            var type = args[0];
+            var source = args[1];
+            var searchRoot = args[2];
+            var filters = args[3].Split(",");
+            var output = args[4];
 
-            // foreach(JToken element in queryResults) {
-            //     Console.WriteLine(element["height"]);
-            // }
+            string result = null;
 
-            IList<string> results = json[args[2]].Select(s => (string) s.SelectToken(args[3])).ToList();
-
-            foreach(string res in results) {
-                Console.WriteLine(res);
+            if (type == "-u") {
+                result = await client.GetStringAsync(source);
+            } else if (type == "-f") {
+                result = File.ReadAllText(source);
+            } else {
+                throw new NotImplementedException("The source type isn't valid. Use -u option to urls or -f for files.");
             }
+
+            args.Select(a => a == "-o")
+            if (a)
+            
+            if (args.Contains("-o")) {
+
+            }
+            
+            JObject json = JObject.Parse(result);
+            JArray data = (JArray) json[args[2]];
+
+            
+
+
         }
     }
 }

@@ -47,6 +47,14 @@
               "target": "Package",
               "version": "[15.0.5, )"
             },
+            "McMaster.Extensions.CommandLineUtils": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "McMaster.Extensions.Hosting.CommandLine": {
+              "target": "Package",
+              "version": "[*, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[12.0.3, )"
