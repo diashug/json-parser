@@ -19,15 +19,48 @@ namespace JsonParser
             // args[3] = filters (separated by comma)
             // https://swapi.dev/api/people/
 
-            var app = new CommandLineApplication<Program>(throwOnUnexpectedArg: false);
-
-            var type = args[0];
-            var source = args[1];
-            var searchRoot = args[2];
-            var filters = args[3].Split(",");
-            var output = args[4];
+            string type = null;
+            string source = null;
+            string elementRoot = null;
+            string[] fields = null;
+            string output = null;
 
             string result = null;
+
+            if (args.Any(a => a == "-o"))
+            {
+                output = args[Array.IndexOf(args, "-o") + 1];
+            } else
+            {
+                throw new Exception("-o: missing the output file path");
+            }
+
+            if (args.Any(a => a == "-u"))
+            {
+                type = "-u";
+                source = args[Array.IndexOf(args, "-u") + 1];
+            } else if (args.Any(a => a == "-f"))
+            {
+                type = "-f";
+                source = args[Array.IndexOf(args, "-f") + 1];
+            } else
+            {
+                throw new Exception("-u or -f: missing the source type");
+            }
+
+            if (args.Any(a => a == "-r"))
+            {
+                elementRoot = args[Array.IndexOf(args, "-r") + 1];
+            } else
+            {
+                throw new Exception("-r: missing the root element");
+            }
+
+            // optional filter
+            if (args.Any(a => a == "-fields"))
+            {
+                fields = args[Array.IndexOf(args, "-fields") + 1].Split(',');
+            }
 
             if (type == "-u") {
                 result = await client.GetStringAsync(source);
@@ -36,20 +69,16 @@ namespace JsonParser
             } else {
                 throw new NotImplementedException("The source type isn't valid. Use -u option to urls or -f for files.");
             }
-
-            args.Select(a => a == "-o")
-            if (a)
-            
-            if (args.Contains("-o")) {
-
-            }
             
             JObject json = JObject.Parse(result);
-            JArray data = (JArray) json[args[2]];
+            JArray data = (JArray) json[elementRoot];
 
-            
-
-
+            foreach(JToken elem in data)
+            {
+                foreach (string field in fields) {
+                    Console.WriteLine(elem[field]);
+                }
+            }
         }
     }
 }

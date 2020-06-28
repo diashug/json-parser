@@ -13,7 +13,7 @@ namespace JsonParser.Exporters
 
         }
 
-        public void Export(Dictionary<string, object> data)
+        public void Export(string[] filters, JArray data)
         {
             throw new NotImplementedException();
         }

@@ -5198,7 +5198,7 @@
       "ClosedXML >= 0.95.2",
       "CsvHelper >= 15.0.5",
       "McMaster.Extensions.CommandLineUtils >= 3.0.0",
-      "McMaster.Extensions.Hosting.CommandLine >= *",
+      "McMaster.Extensions.Hosting.CommandLine >= 3.0.0",
       "Newtonsoft.Json >= 12.0.3",
       "System.Text.Json >= 4.7.2"
     ]
@@ -5256,7 +5256,7 @@
           },
           "McMaster.Extensions.Hosting.CommandLine": {
             "target": "Package",
-            "version": "[*, )"
+            "version": "[3.0.0, )"
           },
           "Newtonsoft.Json": {
             "target": "Package",
