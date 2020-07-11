@@ -1,8 +1,9 @@
-﻿using System;
-using System.Linq;
-using Newtonsoft.Json.Linq;
-using JsonParser.Models;
+﻿using JsonParser.Models;
 using JsonParser.Services;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace JsonParser
 {
@@ -10,14 +11,16 @@ namespace JsonParser
     {
         static void Main(string[] args)
         {
-            var options = new CommandLineParser(args);
+            var commandLineParser = new CommandLineParser();
+            var options = commandLineParser.Parse(args);
+
             var inputReader = new InputReader();
             string result = null;
 
             if (options.Type == "-u") {
-                result = inputReader.FromUrl(options.Source);
+                result = inputReader.FromUrlAsync(options.Source).Result;
             } else if (options.Type == "-f") {
-                result = inputReader.FromFile(options.Source);
+                result = inputReader.FromFileAsync(options.Source).Result;
             } else {
                 throw new NotImplementedException("The source type isn't valid. Use -u option to urls or -f for files.");
             }
@@ -25,12 +28,6 @@ namespace JsonParser
             JObject json = JObject.Parse(result);
             JArray data = (JArray) json[options.RootElement];
 
-            foreach(JToken elem in data)
-            {
-                foreach (string field in options.Fields) {
-                    Console.WriteLine(elem[field]);
-                }
-            }
         }
     }
 }

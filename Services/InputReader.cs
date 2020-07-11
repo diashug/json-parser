@@ -12,12 +12,12 @@ namespace JsonParser.Services
 
         // https://swapi.dev/api/people/
 
-        public async Task<string> FromUrl(string source)
+        public async Task<string> FromUrlAsync(string source)
         {
             return await client.GetStringAsync(source);
         }
 
-        public async Task<string> FromFile(string source)
+        public async Task<string> FromFileAsync(string source)
         {
             return await File.ReadAllText(source);
         }
