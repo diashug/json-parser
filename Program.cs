@@ -28,6 +28,13 @@ namespace JsonParser
             JObject json = JObject.Parse(result);
             JArray data = (JArray) json[options.RootElement];
 
+            var dataCollector = new DataCollector(options.Fields);
+            var output = dataCollector.Query(data);
+
+
+            Console.WriteLine(output);
+
+            // TODO: exporter
         }
     }
 }
