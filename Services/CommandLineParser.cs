@@ -47,6 +47,8 @@ namespace JsonParser.Services
             if (Array.Exists(args, a => a == "-fields"))
             {
                 options.Fields = args[Array.IndexOf(args, "-fields") + 1].Split(',');
+            } else {
+                options.Fields = null;
             }
 
             return options;

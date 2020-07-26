@@ -31,7 +31,6 @@ namespace JsonParser
             var dataCollector = new DataCollector(options.Fields);
             var output = dataCollector.Query(data);
 
-
             Console.WriteLine(output);
 
             // TODO: exporter
