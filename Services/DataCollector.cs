@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace JsonParser.Services
@@ -21,8 +22,12 @@ namespace JsonParser.Services
 
             foreach(JToken elem in data)
             {
-                foreach (string field in this.fields) {
-                    results[i].Add(elem[field].ToString());
+                if (this.fields != null) {
+                    foreach (string field in this.fields) {
+                        results[i].Add(elem[field].ToString());
+                    }
+                } else {
+                    results[i] = elem.Values<string>().ToList();
                 }
 
                 i ++;
