@@ -10,7 +10,7 @@ namespace JsonParser.Services
     {
         private readonly string[] fields;
 
-        public DataCollector(string[] fields)
+        public DataCollector(string[] fields = null)
         {
             this.fields = fields;
         }
