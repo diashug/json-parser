@@ -27,7 +27,11 @@ namespace JsonParser.Services
                         results[i].Add(elem[field].ToString());
                     }
                 } else {
-                    results[i] = elem.Values<string>().ToList();
+                    foreach (JToken e in elem) {
+                        Console.WriteLine(e.ToString());
+                        //results[i].Add();
+                    }
+                    //results[i] = elem.Values<string>().ToList();
                 }
 
                 i ++;
