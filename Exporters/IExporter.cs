@@ -1,10 +1,9 @@
-using System;
-using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
 
 namespace JsonParser.Interfaces
 {
     public interface IExporter
     {
-        void Export(string[] filters, JArray data);
+        void Export(List<List<string>> data);
     }
 }

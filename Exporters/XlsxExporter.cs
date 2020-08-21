@@ -1,8 +1,6 @@
 ﻿using JsonParser.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using Newtonsoft.Json.Linq;
 
 namespace JsonParser.Exporters
 {
@@ -10,10 +8,9 @@ namespace JsonParser.Exporters
     {
         public XlsxExporter()
         {
-
         }
 
-        public void Export(string[] filters, JArray data)
+        public void Export(List<List<string>> data)
         {
             throw new NotImplementedException();
         }

@@ -12,15 +12,17 @@ namespace JsonParser.Services
         {
         }
 
-        public List<string>[] Query(JObject data, string rootElement, string[] fields)
+        public List<List<string>> Query(JObject data, string rootElement, string[] fields)
         {
             // Examples of JSON Path:
             // $.results[:].*
             // $..[name,height]
-
+            
             var numberOfResults = data[rootElement].Count();
+            var results = new List<List<string>>();
 
             for (var i = 0; i < numberOfResults; i ++) {
+
                 var query = "$." + rootElement + "[" + i + "].";
 
                 if (fields != null) {
@@ -30,12 +32,10 @@ namespace JsonParser.Services
                     query += "*";
                 }
 
-                var results = data.SelectTokens(query).Values<string>().ToList();
+                results.Add(data.SelectTokens(query).Values<string>().ToList());
             }
 
-            
-
-            return null;
+            return results;
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using JsonParser.Models;
+﻿using JsonParser.Exporters;
 using JsonParser.Services;
 using Newtonsoft.Json.Linq;
 using System;
@@ -30,9 +30,9 @@ namespace JsonParser
             var dataCollector = new DataCollector();
             var output = dataCollector.Query(data, options.RootElement, options.Fields);
 
-            Console.WriteLine(output);
+            var exporter = new CsvExporter();
 
-            // TODO: exporter
+            exporter.Export(output);
         }
     }
 }

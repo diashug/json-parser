@@ -11,27 +11,15 @@ namespace JsonParser.Exporters
     public class CsvExporter : IExporter
     {
         public CsvExporter()
-        {
-            
+        {   
         }
 
-        public void Export(string[] filters, JArray data)
+        public void Export(List<List<string>> data)
         {
-            var records = new List<object>();
-
-            foreach (JObject res in data) {
-                // filter by fields
-                foreach (string filter in filters) {
-                    
-                }
-
-                Console.WriteLine(res["name"] + "," + res["birth_year"]);
-            }
-
             var writer = new StreamWriter("output.csv");
             var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
 
-            csv.WriteRecords(records);
+            csv.WriteRecords(data);
         }
     }
 }

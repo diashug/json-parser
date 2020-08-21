@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/diashug/Projects/JsonParser/JsonParser.csproj": {}
+    "/home/diashug/repos/json-parser/JsonParser.csproj": {}
   },
   "projects": {
-    "/Users/diashug/Projects/JsonParser/JsonParser.csproj": {
+    "/home/diashug/repos/json-parser/JsonParser.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/diashug/Projects/JsonParser/JsonParser.csproj",
+        "projectUniqueName": "/home/diashug/repos/json-parser/JsonParser.csproj",
         "projectName": "JsonParser",
-        "projectPath": "/Users/diashug/Projects/JsonParser/JsonParser.csproj",
-        "packagesPath": "/Users/diashug/.nuget/packages/",
-        "outputPath": "/Users/diashug/Projects/JsonParser/obj/",
+        "projectPath": "/home/diashug/repos/json-parser/JsonParser.csproj",
+        "packagesPath": "/home/diashug/.nuget/packages/",
+        "outputPath": "/home/diashug/repos/json-parser/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "/Users/diashug/.nuget/NuGet/NuGet.Config"
+          "/home/diashug/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -79,7 +76,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.202/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.401/RuntimeIdentifierGraph.json"
         }
       }
     }
