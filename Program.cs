@@ -25,11 +25,10 @@ namespace JsonParser
                 throw new NotImplementedException("The source type isn't valid. Use -u option to urls or -f for files.");
             }
 
-            JObject json = JObject.Parse(result);
-            JArray data = (JArray) json[options.RootElement];
+            JObject data = JObject.Parse(result);
 
-            var dataCollector = new DataCollector(options.Fields);
-            var output = dataCollector.Query(data);
+            var dataCollector = new DataCollector();
+            var output = dataCollector.Query(data, options.RootElement, options.Fields);
 
             Console.WriteLine(output);
 

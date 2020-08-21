@@ -8,36 +8,34 @@ namespace JsonParser.Services
 {
     public class DataCollector
     {
-        private readonly string[] fields;
-
-        public DataCollector(string[] fields = null)
+        public DataCollector()
         {
-            this.fields = fields;
         }
 
-        public List<string>[] Query(JArray data)
+        public List<string>[] Query(JObject data, string rootElement, string[] fields)
         {
-            List<string>[] results = new List<string>[data.Count];
-            var i = 0;
+            // Examples of JSON Path:
+            // $.results[:].*
+            // $..[name,height]
 
-            foreach(JToken elem in data)
-            {
-                if (this.fields != null) {
-                    foreach (string field in this.fields) {
-                        results[i].Add(elem[field].ToString());
-                    }
+            var numberOfResults = data[rootElement].Count();
+
+            for (var i = 0; i < numberOfResults; i ++) {
+                var query = "$." + rootElement + "[" + i + "].";
+
+                if (fields != null) {
+                    var processedFields = String.Join(",", fields);
+                    query += "[" + processedFields + "]";
                 } else {
-                    foreach (JToken e in elem) {
-                        Console.WriteLine(e.ToString());
-                        //results[i].Add();
-                    }
-                    //results[i] = elem.Values<string>().ToList();
+                    query += "*";
                 }
 
-                i ++;
+                var results = data.SelectTokens(query).Values<string>().ToList();
             }
 
-            return results;
+            
+
+            return null;
         }
     }
 }
